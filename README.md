@@ -1,4 +1,4 @@
-<img src="./images/github-cube-logo.png" style="margin-bottom: 30px">
+[![github-cube](https://raw.githubusercontent.com/jeromehaas/github-cube/master/images/github-cube-logo.png)](https://github.com/jeromehaas/github-cube)
 
 # github-cube
 This CLI allows you to perform Git and Github tasks straight form the terminal and it allows you to deploy your code directly to your webserver.
@@ -6,7 +6,7 @@ This CLI allows you to perform Git and Github tasks straight form the terminal a
 ## Installation
 Install the package globally with npm with the command: 
 ```sh
-npm i github-cube
+npm i github-cube -g
 ```
 
 ## Dependencies 
@@ -24,7 +24,7 @@ The following functions are at the moment available:
 - [Commit](#commit)
 - [Push](#push)
 - [Add remote](#add-remote)
-- [#Add live-remote](#add-live-remote)
+- [Add live-remote](#add-live-remote)
 - [Remove remote](#remove-remote)
 - [Deploy](#deploy)
 - [Authentification](#authentification)
@@ -84,23 +84,21 @@ You can create a personal access token by following the [manual from GitHub](htt
 Your credentials will be safed locally and it will not be uploaded at any time. If you want to change the credentials once you set them up, you can find and edit them in the directory `/lib/userdata.json`.
 
 ### Dependencies for deploy function
+Before you use and follow this function, let me tell you that this script is written by a fool. If you are not familar with SSH, Ngnix or Apache do not blindly use this script, because it has the potencial to overwrite data on your server.
+You will follow this manual on your own responsibility.
+
 In order to use the deploy function, you need: 
 - access to a webserver (Ngnix or Apache will work)
-- an adminuser or an user with read and write permissions for the 'www' or 'html' (depending on your webserver)
+- an adminuser or an user with read and write permissions for the 'www' or 'html' (depending on your webserver) 
 
-How to use the deploy function:
+1. Login to your webserver and create anfolder called ${domain-name}.git and create a bare git repository inside it with the following command:
+	```
+	git init --bare
+	```   
 
-	Before you use and follow this function, let me tell you that this script is written by a fool. If you are not familar with SSH, Ngnix or Apache do not blindly use this script, because it has the potencial to overwrite data on your server.
-	You will follow this manual on your own responsibility.
-
-  1. Login to your webserver and create anfolder called ${domain-name}.git and create a bare git repository inside it with the following command:
-
-	```sh
-		git init --bare
-	```  
 	If you use an Nginx webserver you probably want to initialize the git repository in the directory `/usr/share/nginx/repositories/${domain-name}.git/` and if you are using an apache webserver you probably want to create the repository inside `/var/repositories/${domain-name}.git/`
  
-   2. In the created repository cd into the folder `/hooks` and create a the file `post-receive`
+2. In the created repository cd into the folder `/hooks` and create a the file `post-receive`.
 	```sh
 	# for Nginx
 	cd /usr/share/nginx/repositories/${domain-name}.git/	
@@ -111,7 +109,7 @@ How to use the deploy function:
 	touch post-receive
 	```
 
-   3. In the newly created `post-receive` file, declare the script as bash script and set the path of the Git repository and the path of the public html folder like in the snippet below:
+3. In the newly created `post-receive` file, declare the script as bash script and set the path of the Git repository and the path of the public html folder like in the snippet below:
 	```sh
 	#!/bin/sh
 
@@ -124,14 +122,14 @@ How to use the deploy function:
 
 	The snippets below can be used as an example, but it can be that your server is configured differently and that you have to adjust the paths.
 
-	4. Make sure that the file `post-receive` is executable by the command:
+4. Make sure that the file `post-receive` is executable by the command:
 	```sh
 	chmod +x post-receive
 	```
 
-  5. Make a [Live-Remote](#add-live-remote) and provide the username and the host or IP address to the function
+5. Make a [Live-Remote](#add-live-remote) and provide the username and the host or IP address to the function.     
 
-	6. Use the function [Deploy](#deplay) to push your repository to the server. 
+6. Use the function [Deploy](#deploy) to push your repository to the server. 
 	That's it, if you have done everything correctly, your repository will now be deployed!
 
 

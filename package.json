@@ -1,7 +1,7 @@
 {
   "name": "github-cube",
 	"version": "1.0.2",
-	"description": "GitHub/Git CLI",
+	"description": "GitHub/Git assistant CLI",
   "main": "index.js",
   "bin": {
 		"ghc": "./index.js"
