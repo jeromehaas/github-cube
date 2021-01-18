@@ -1,7 +1,7 @@
 {
   "name": "github-cube",
-  "version": "1.0.0",
-  "description": "GitHub CLI",
+	"version": "1.0.2",
+	"description": "GitHub/Git CLI",
   "main": "index.js",
   "bin": {
 		"ghc": "./index.js"
@@ -12,7 +12,11 @@
 		"Deplay",
 		"CLI",
 		"version-control"
-  ],
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jeromehaas/github-cube.git"
+	},
   "author": "Jérôme Haas",
   "license": "ISC",
 	"dependencies": {
