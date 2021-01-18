@@ -27,8 +27,6 @@ The following functions are at the moment available:
 - [Add live-remote](#add-live-remote)
 - [Remove remote](#remove-remote)
 - [Deploy](#deploy)
-- [Authentification](#authentification)
-- [Dependencies for deploy function](#dependencies-for-deploy-function)
 
 ### Init
 This will create an empty Git repository.
