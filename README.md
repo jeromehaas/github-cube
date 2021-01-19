@@ -65,7 +65,7 @@ It will propt you all your remotes from which you can choose to which remote you
 ### Add remote
 Let's you add a remote to your git repository
 
-## #Add live-remote
+### Add live-remote
 Let's you add a live remote to push your repository to your webserver via SSH.
 
 ### Remove remote
@@ -88,6 +88,7 @@ You will follow this manual on your own responsibility.
 In order to use the deploy function, you need: 
 - access to a webserver (Ngnix or Apache will work)
 - an adminuser or an user with read and write permissions for the 'www' or 'html' (depending on your webserver) 
+- Optional but not required is to use an SSH key to login to the server without the need to provide the password for the server
 
 1. Login to your webserver and create anfolder called ${domain-name}.git and create a bare git repository inside it with the following command:
 	```
@@ -103,7 +104,7 @@ In order to use the deploy function, you need:
 	touch post-receive
 
 	# for Apache
-	/var/www/repositories/${domain-name}.git/	
+	cd /var/www/repositories/${domain-name}.git/	
 	touch post-receive
 	```
 

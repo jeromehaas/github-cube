@@ -10,7 +10,7 @@ var argv = require('minimist')(process.argv.slice(2));
 const run = async () => {
 
 	clear();
-	console.log(chalk.blue(figlet.textSync('github-cube', {horizontalLayout: 'full'})));
+	console.log(chalk.rgb(63, 149, 58)(figlet.textSync('github-cube', {horizontalLayout: 'full'})));
 	console.log(' ');
 	
 	const command = argv._[0];
