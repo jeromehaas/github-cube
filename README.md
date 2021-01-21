@@ -100,11 +100,11 @@ In order to use the deploy function, you need:
 2. In the created repository cd into the folder `/hooks` and create a the file `post-receive`.
 	```sh
 	# for Nginx
-	cd /usr/share/nginx/repositories/${domain-name}.git/	
+	cd /usr/share/nginx/repositories/${domain-name}.git/hooks	
 	touch post-receive
 
 	# for Apache
-	cd /var/www/repositories/${domain-name}.git/	
+	cd /var/www/repositories/${domain-name}.git/hooks	
 	touch post-receive
 	```
 

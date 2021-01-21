@@ -1,6 +1,6 @@
 {
   "name": "github-cube",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "GitHub/Git assistant CLI",
   "main": "index.js",
   "bin": {
